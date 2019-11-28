@@ -1,0 +1,16 @@
+{
+    "name": "mark/composer",
+    "require": {
+        "michelf/php-markdown": "^1.8",
+        "twig/twig": "^2.0"
+    },
+    "authors": [
+        {
+            "name": "Mblz06",
+            "email": "wanamokesss@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {"App\\" : "src/"}
+    }
+}
