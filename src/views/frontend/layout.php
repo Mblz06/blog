@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,9 +31,6 @@
                             <a class="nav-link" href="#s1-container"><i class="fas fa-newspaper"></i> ACTUALITES</a>
                         </li>
                      <!-- {% if(!isset($_SESSION['username'])) %} -->
-
-                          
-
                             <li class="nav-item">
                                 <a class="nav-link" href="#carte"><i class="fas fa-user-plus"></i> INSCRIPTION</a>
                             </li>
@@ -49,15 +47,12 @@
             </div>
         </nav>
     </header>
+    
+<?php echo $content ?>
+
 <main>
 </main>
-
     <footer>
-
     </footer>
 
 <script src="https://kit.fontawesome.com/85949c255d.js"></script>
-
-</body>
-
-</html>

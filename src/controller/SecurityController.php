@@ -5,67 +5,63 @@ namespace App\Controller;
 use App\Controller\Controller;
 use App\Model\User;
 use App\Model\UserManager;
+use \Exception;
 
-
-class SecurityController extends Controller
+class SecurityController
 {
-    public function register()
+    public function afterregister()
     {
         if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'username') && filter_has_var(INPUT_POST, 'password')) {
-
             $UserManager = new UserManager();
-            $errors = [];
-
             $user = new User();
-
+            
             $user->setUserName(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
             $user->setEmail(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
             $user->setPassword(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
             if ($this->verifUsername($user->getUserName())) {
-                $errors[] = "username invalide ...";
             } else {
-                if ($UserManager->checkUsernameUnicity($user->getUserName())) // il existe déjà un membre avec le même login
-                {
-                    array_push($errors, "username déjà existant");
-                }
+  
+                throw new Exception('username non valide ...');
             }
 
             if ($this->verifMail($user->getEmail())) {
-                array_push($errors, "email invalide");
-            } else {
-                if ($UserManager->verifEmail($user->getEmail())) // il existe déjà un membre avec le même email
-                {
-                    array_push($errors, "email déjà existant");
+                } else {
+                    if ($UserManager->verifEmail($user->getEmail())) {
+                        throw new Exception('email déjà existant');
+                    }
                 }
-            }
 
             if ($this->verifPassword($user->getPassword())) {
-                array_push($errors, "password invalide");
+                throw new Exception('password invalide');
             }
-            if (count($errors) > 0) {
-                // y'as au moins une erreur on affiche tous $errors
-                var_dump($errors);
-            } else {
+            else {
                 //si y'as aucune erreur on ajoute l'utilisateur
                 $user->setPassword(password_hash($user->getPassword(), PASSWORD_DEFAULT));
                 $user->setIsAdmin(false);
-                var_dump($user);
+
                 $UserManager->addUser($user);
             }
         }
             
-        $this->twig->display("frontend/register.html", ['errors' => $errors]);
+        header("Location: index.php?p=login");
     }
+
+    public function register()
+    {
+        require ("src/views/frontend/register.php");
+    }
+
+
 
     public function login()
     {
 
-        if (filter_has_var(INPUT_POST, 'login') && filter_has_var(INPUT_POST, 'password')) {
+        if (filter_has_var(INPUT_POST, 'login') && filter_has_var(INPUT_POST, 'password'))  {
 
             $UserManager = new UserManager();
             $user = new User();
-            $errors = [];
+
 
             $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
 
@@ -79,40 +75,78 @@ class SecurityController extends Controller
 
             if ($UserManager->authentification($user)) {
                 $_SESSION['username'] = $user->getUserName();
-                $_SESSION['isAdmin'] = $isadmin->getIsAdmin();
-                return false;
+                $_SESSION['isAdmin'] = $user->getIsAdmin(); 
+                $_SESSION['ID'] = $user->getID();
             } else {
-                array_push($errors, "Mot de passe ou identifiant invalide");
+  
+                throw new Exception('Mot de passe ou identifiant non valide ...');
             }
         }
-        $this->twig->display("frontend/login.html");
+       /* $this->twig->display("frontend/home.html"); */
+       
+    header("Location: index.php?p=home");
+    }
+
+
+
+ public function logout()
+    {
+        session_start();
+
+        $_SESSION = array();
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        session_destroy();
+            session_destroy();
+    }
+
+    public function commentaires()
+    {
+        require ("src/views/frontend/commentaires.php");
     }
 
     private function verifUsername($username)
-    {
-        if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $username)) {
+    { $retour = false;
+        if (preg_match("/^[a-z\d_]{5,20}$/i", $username)) { 
             $retour = true;
         }
 
-        return false;
+        return $retour;
     }
 
     private function verifPassword($password)
-    {
-        if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $password)) {
+    {  $retour = false;
+        if (preg_match("/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/", $password)) {
             $retour = true;
         }
 
-        return false;
+        return $retour;
     }
 
     public function verifMail($email)
-    {
+    { $retour = false;
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return true;
+            $retour = true;
         }
 
-        return false;
+        return $retour;
     }
 
 }
+
+
+/* public function verifMail($email)
+{ $retour = false;
+    if (filter_var('test@test.com', FILTER_VALIDATE_EMAIL)) {
+        $retour = true;
+    }
+
+    return $retour;
+}
+
+} */

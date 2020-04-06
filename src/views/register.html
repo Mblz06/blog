@@ -1,6 +1,17 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Blog de Jean Dore</title>
+    <meta charset=utf-8>
+    <meta name="description" content="Blog de Mark">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-{% block main %}
+    <link rel="stylesheet" href="../blog/assets/css/style.css" type="text/css">
+</head>
+
+
+
 
 
     <div class="container register-form">
@@ -9,7 +20,7 @@
                 <p>Inscription.</p>
             </div>
             
-            <form action="register.php" method="POST"></form>
+            <form action="index.php?p=checkregister" method="POST"></form>
             <div class="form-content">
                 <div class="row">
                     <div class="col-md-6">
@@ -33,6 +44,20 @@
             </div>
         </div>
     </div>
+
+
+    <main>
+    </main>
+    
+        <footer>
+    
+        </footer>
+    
+    <script src="https://kit.fontawesome.com/85949c255d.js"></script>
+    
+    </body>
+    
+    </html>
 
     <!--  <h2>Enregistrement</h2>
     <form action="register.php" method="POST">
@@ -58,4 +83,3 @@
     </form>
 -->
     
-    {% endblock %}

@@ -1,8 +1,7 @@
 {
     "name": "mark/composer",
     "require": {
-        "michelf/php-markdown": "^1.8",
-        "twig/twig": "^2.0"
+        "michelf/php-markdown": "^1.8"
     },
     "authors": [
         {

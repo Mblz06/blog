@@ -10,7 +10,7 @@ class Manager{
     function __construct() {
 
         $this->pdo = new PDO(
-            'mysql:host=localhost;dbname=blog', 'root', '');
+            'mysql:host=localhost;dbname=blog; charset=utf8', 'root', '');
             }
         }
         

@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Blog de Jean Dore</title>
-    <meta charset=utf-8>
-    <meta name="description" content="Blog de Mark">
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../blog/assets/css/style.css" type="text/css">
-</head>
 
-<body>
+<?php ob_start(); ?>
 <div class="container register-form">
 
     <div class="note">
-        <p>login.</p>
+        <p>Inscription.</p>
     </div>
 
-    <form action="index.php?p=checklogin" method="POST">
+    <form action="index.php?p=afterregister" method="POST">
         <div class="form-content">
             <div class="row">
                 <div class="col-md-6">
@@ -38,18 +28,34 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" class="btnSubmit" value="login" />
+            <input type="submit" class="btnSubmit" value="enregistrer" />
         </div>
     </form>
 </div>
-</body>
+<?php $content = ob_get_clean(); ?>
+<?php require('layout.php'); ?>
 
-<footer>
+<!--  <h2>Enregistrement</h2>
+    <form action="register.php" method="POST">
+        <label>Identifiant :</label>
+        <input type="text" name="username" required /><br /><br />
+        <label>Mot de passe :</label>
+        <input type="password" name="password" required /><br /><br />
+        <label>Retapez mot de passe :</label>
+        <input type="password" name="password2" required /><br /><br />
+        <input type="submit" />
+    </form>
+    <br /><hr />
 
-</footer>
 
-<script src="https://kit.fontawesome.com/85949c255d.js"></script>
+    
+    <h2>Connexion</h2>
+    <form action="login.php" method="POST">
+        <label>Identifiant :</label>
+        <input type="text" name="username" required /><br /><br />
+        <label>Mot de passe :</label>
+        <input type="password" name="password" required /><br /><br />
+        <input type="submit" />
+    </form>
+-->
 
-</body>
-
-</html>
