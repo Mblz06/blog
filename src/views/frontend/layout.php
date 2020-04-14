@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,7 +29,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#s1-container"><i class="fas fa-newspaper"></i> ACTUALITES</a>
                         </li>
-                     <!-- {% if(!isset($_SESSION['username'])) %} -->
+
+                        <?php  
+                   if(!isset($_SESSION['username'])){
+                         ?>
+                            <li>
+                            <a href="" class="btn  btn-danger">DECONNEXION</a>
+                           </li>     
+                            
+                           <?php } 
+                           
+                           else  { ?>
+
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#carte"><i class="fas fa-user-plus"></i> INSCRIPTION</a>
                             </li>
@@ -38,10 +49,11 @@
                                  
                                 <a class="nav-link" href="#carte"><i class="fas fa-user-plus"></i> CONNEXION</a>
                             </li>
-                            
-                            <li>
-                                <a href="" class="btn  btn-danger">DECONNEXION</a>
-                               </li>          
+                          <?php    }  ?>
+
+                           
+
+     
                     </ul>
                 </div>
             </div>
@@ -55,4 +67,4 @@
     <footer>
     </footer>
 
-<script src="https://kit.fontawesome.com/85949c255d.js"></script>
+                           <script src="https://kit.fontawesome.com/85949c255d.js"></script>

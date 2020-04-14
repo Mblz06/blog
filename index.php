@@ -42,9 +42,11 @@ try {
     } elseif ($page === 'login') {
         $controller = new SecurityController();
         $controller -> login();
+
     } elseif ($page === 'afterlogin') {
         $controller = new SecurityController();
         $controller -> afterlogin();
+        
     } elseif ($page === 'register') {
         $controller = new SecurityController();
         $controller -> register();

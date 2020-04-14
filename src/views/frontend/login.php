@@ -6,7 +6,7 @@
     </div>
 
 
-    <form action="index.php?p=register" method="POST">
+    <form action="index.php?p=afterlogin" method="POST">
         <div class="form-content">
             <div class="row">
                 <div class="col-md-6">

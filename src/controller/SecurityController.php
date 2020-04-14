@@ -54,7 +54,7 @@ class SecurityController
 
 
 
-    public function login()
+  public function afterlogin()
     {
 
         if (filter_has_var(INPUT_POST, 'login') && filter_has_var(INPUT_POST, 'password'))  {
@@ -82,12 +82,14 @@ class SecurityController
                 throw new Exception('Mot de passe ou identifiant non valide ...');
             }
         }
-       /* $this->twig->display("frontend/home.html"); */
-       
-    header("Location: index.php?p=home");
+       header("Location: index.php?p=home");
     }
 
 
+public function login()
+{
+    require ("src/views/frontend/login.php");
+}
 
  public function logout()
     {
@@ -103,7 +105,10 @@ class SecurityController
         }
         session_destroy();
             session_destroy();
+            
+            header("location: index.php?p=home");
     }
+
 
     public function commentaires()
     {
