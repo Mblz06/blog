@@ -52,10 +52,11 @@ class PostsController {
 
     }
 
-    public function commentaires (){
+    public function newcomment ($idchapitre){
         $PostsManager = new PostsManager();
-        $donnees = $PostsManager->commentaire();
-        require ("src/views/frontend/commentaires.php"); 
+        $donnees = $PostsManager->addcommentaire($idchapitre);
+
+        header('location: index.php?p=post.show&id='.$idchapitre);
 
     }
 

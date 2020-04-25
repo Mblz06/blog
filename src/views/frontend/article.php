@@ -79,6 +79,31 @@
       //  var_dump($commentaire->rowCount());
         ?>
 
+
+<?php  
+                   if(isset($_SESSION['username'])){
+                         ?>
+<form action="index.php?p=post.newcomment&idchapitre=<?= $_GET['id']?>" method="POST">
+<div class="form-group">
+    <label for="exampleFormControlTextarea1">Commentaire</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <p>
+         <button>Envoyer mon commentaire</button>
+        </p>
+  </div>
+</form>
+
+<?php } 
+                           
+                           else  { ?>
+        <p>
+         Vous devez vous connecter
+        </p>
+<?php    }  ?>
+
+
+
+
 </div>
 </div>
 </div>

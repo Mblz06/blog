@@ -15,7 +15,16 @@
         <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark main-nav">
             <div class="container">
                 <ul class="nav navbar-nav text-nowrap flex-row mx-md-auto order-1 order-md-2">
-                    <li class="nav-item"><a class="nav-link" href="#web">Jean Dore</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#web">Jean Dore</a>
+                <?php
+                if(isset($_SESSION['username'])){
+
+                    echo($_SESSION['username']);
+                }
+                ?>
+                </li>
+
                     <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target=".nav-content"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -31,10 +40,10 @@
                         </li>
 
                         <?php  
-                   if(!isset($_SESSION['username'])){
+                   if(isset($_SESSION['username'])){
                          ?>
                             <li>
-                            <a href="" class="btn  btn-danger">DECONNEXION</a>
+                            <a href="index.php?p=logout" class="btn  btn-danger">DECONNEXION</a>
                            </li>     
                             
                            <?php } 
@@ -43,11 +52,11 @@
 
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#carte"><i class="fas fa-user-plus"></i> INSCRIPTION</a>
+                                <a class="nav-link" href="index.php?p=register"><i class="fas fa-user-plus"></i> INSCRIPTION</a>
                             </li>
                             <li class="nav-item">
                                  
-                                <a class="nav-link" href="#carte"><i class="fas fa-user-plus"></i> CONNEXION</a>
+                                <a class="nav-link" href="index.php?p=login"><i class="fas fa-user-plus"></i> CONNEXION</a>
                             </li>
                           <?php    }  ?>
 

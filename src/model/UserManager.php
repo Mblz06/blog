@@ -5,6 +5,7 @@ namespace App\Model;
 use App\Model\Manager;
 use App\Model\User;
 use \PDO;
+use \Exception;
 
 class userManager extends Manager
 {
@@ -79,3 +80,30 @@ class userManager extends Manager
         }
     }
 }
+
+
+
+/* 
+    public function authentification(User $user)
+    {
+        if (!empty($user->getUserName())) {
+            $query = $this->pdo->prepare('SELECT * FROM users WHERE username = :username');
+            $query->bindParam(':username', $username);
+            $username = $user->getUserName();
+        } elseif (!empty($user->getEmail())) {
+            $query = $this->pdo->prepare('SELECT * FROM users WHERE email = :email');
+            $query->bindParam(':email', $email);
+            $email = $user->getEmail();
+        } else {
+            throw new Exception('Authentification invalide ...');
+        }
+        $query->execute();
+        /* $result = $query->fetchAll();
+        var_dump ($result); 
+        if ($query->rowCount()==1) {
+            $result = $query->fetch();
+            return password_verify($user->getPassword(), $result['password']);
+        } else {
+            throw new Exception('Nom d utilisateur invalide ...');
+        }
+    } */

@@ -9,7 +9,7 @@ use App\Controller\PostsController;
 const BASE_PATH=__DIR__;
 
 // Routing 
-
+session_start();
 $page = 'home';
 
 if (isset($_GET['p'])) {
@@ -29,6 +29,11 @@ try {
     } elseif ($page === 'post.category') {
         $controller = new PostsController();
         $controller -> category();
+
+    } elseif ($page === 'logout') {
+        $controller = new SecurityController();
+        $controller -> logout();
+
     } elseif ($page === 'post.show') {
         if (isset($_GET['id'])) {
             $controller = new PostsController();
@@ -55,9 +60,17 @@ try {
         $controller = new SecurityController();
         $controller -> afterregister();
     }
-    elseif ($page === 'commentaires') {
-        $controller = new SecurityController();
-        $controller -> commentaires();
+
+    elseif ($page === 'post.newcomment') {
+        if (isset($_GET['idchapitre'])) {
+            $controller = new PostsController();
+            $controller -> newcomment($_GET['idchapitre']);
+        }
+
+
+        else {
+            throw new Exception('pas id commentaire.');
+            }
     }
 
     elseif ($page === 'post.signalcomment') {
