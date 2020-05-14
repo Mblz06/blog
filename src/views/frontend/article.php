@@ -82,11 +82,14 @@
 
 <?php  
                    if(isset($_SESSION['username'])){
+                  
                          ?>
-<form action="index.php?p=post.newcomment&idchapitre=<?= $_GET['id']?>" method="POST">
+
+
+<form action="index.php?p=post.newcomment&idchapitre=<?= $_GET['id']?>" method="POST">   
 <div class="form-group">
-    <label for="exampleFormControlTextarea1">Commentaire</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="content">Commentaire</label>
+    <textarea class="form-control" name="content" id="content" rows="3"></textarea>
         <p>
          <button>Envoyer mon commentaire</button>
         </p>

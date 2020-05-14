@@ -62,6 +62,7 @@ class userManager extends Manager
             $query = $this->pdo->prepare('SELECT * FROM users WHERE username = :username');
             $query->bindParam(':username', $username);
             $username = $user->getUserName();
+
         } elseif (!empty($user->getEmail())) {
             $query = $this->pdo->prepare('SELECT * FROM users WHERE email = :email');
             $query->bindParam(':email', $email);
@@ -79,6 +80,32 @@ class userManager extends Manager
             throw new Exception('Nom d utilisateur invalide ...');
         }
     }
+
+
+
+    public function infosUser(User $user)
+    {
+        if (!empty($user->getUserName())) {
+            $query = $this->pdo->prepare('SELECT * FROM users WHERE username = :username');
+            $username = $user->getUserName();
+            $query->bindParam(':username', $username);
+    
+
+        } elseif (!empty($user->getEmail())) {
+            $query = $this->pdo->prepare('SELECT * FROM users WHERE email = :email');
+            $email = $user->getEmail();
+            $query->bindParam(':email', $email);
+         
+        } else {
+            throw new Exception('utilisateur inconnu ...');
+        }
+        $query->execute();
+
+        return $query;
+    }
+
+
+    
 }
 
 

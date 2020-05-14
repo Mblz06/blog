@@ -16,13 +16,16 @@
             <div class="container">
                 <ul class="nav navbar-nav text-nowrap flex-row mx-md-auto order-1 order-md-2">
 
-                    <li class="nav-item"><a class="nav-link" href="#web">Jean Dore</a>
+                    <li class="nav-item"><a class="nav-link" href="#web">
                 <?php
                 if(isset($_SESSION['username'])){
 
                     echo($_SESSION['username']);
+                    echo 'Bonjour ' .$_SESSION['username']. ',
+                    tu portes le numero ' .$_SESSION['ID']. ' dans les id';
                 }
                 ?>
+                </a>
                 </li>
 
                     <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target=".nav-content"

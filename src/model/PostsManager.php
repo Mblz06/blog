@@ -107,18 +107,18 @@ class PostsManager extends Manager
     }
 
 
-        // Ajouter commentaire
+        /* Ajouter commentaire
 
         public function addcommentaire($ID)
         {
-            $query = $this->pdo->prepare("INSERT INTO commentaire (content, article_id) VALUES (?, ?)");
+            $query = $this->pdo->prepare("INSERT INTO commentaire (userid, content, article_id) VALUES (:userid, :content, :article_id)");
             $query->bindParam(':ID', $ID);
             $result=$query->execute();
     
             if ($result==false) {
                 throw new Exception('Commentaire non ajouté.');
             }
-        }
+        } */
  
 
 

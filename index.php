@@ -10,6 +10,10 @@ const BASE_PATH=__DIR__;
 
 // Routing 
 session_start();
+
+// $_SESSION['ID'] = $user->getID(); 
+
+
 $page = 'home';
 
 if (isset($_GET['p'])) {
@@ -60,18 +64,21 @@ try {
         $controller = new SecurityController();
         $controller -> afterregister();
     }
+  
+
 
     elseif ($page === 'post.newcomment') {
-        if (isset($_GET['idchapitre'])) {
+        if (isset($_GET['idchapitre']) && isset($_POST['content'])) {
             $controller = new PostsController();
-            $controller -> newcomment($_GET['idchapitre']);
+            $controller -> newcomment($_GET['idchapitre'], $_POST['content'] );
         }
 
 
         else {
-            throw new Exception('pas id commentaire.');
+            throw new Exception('problème survenu.');
             }
     }
+
 
     elseif ($page === 'post.signalcomment') {
         if (isset($_GET['id']) && isset($_GET['idchapitre'])) {

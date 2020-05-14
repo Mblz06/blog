@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 use App\Model\PostsManager;
+use App\Model\CommentManager;
+use App\Model\CommentUser;
 use \Exception;
 
 $home = "t";
@@ -52,14 +54,30 @@ class PostsController {
 
     }
 
-    public function newcomment ($idchapitre){
-        $PostsManager = new PostsManager();
-        $donnees = $PostsManager->addcommentaire($idchapitre);
+    public function newcomment ($article){
+  
+        if ((isset($_SESSION['ID']) && filter_has_var(INPUT_POST, 'content'))) {
+        $commentmanager = new CommentManager();
+        $commentuser = new CommentUser();
 
-        header('location: index.php?p=post.show&id='.$idchapitre);
+        $commentuser->setUserID($_SESSION['ID']);
+        $commentuser->setContent(filter_input(INPUT_POST, 'content'));
+        $commentuser->setArticle_ID($article);
+        $commentmanager->addComment($commentuser);
+        }
 
+        else {
+           
+            throw new Exception('Erreur lors du commentaire.');
+        }
+
+
+        
+
+        header('location: index.php?p=post.show&id='.$article);
+
+  
     }
-
     public function afterregister (){
 
 
