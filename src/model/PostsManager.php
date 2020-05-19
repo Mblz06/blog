@@ -121,7 +121,31 @@ class PostsManager extends Manager
         } */
  
 
-
+        public function allComment()
+        {
+            $query = $this->pdo->query('SELECT id, userid, content, article_id, signalement, DATE_FORMAT(date, \'%d/%m/%Y à %Hh%imin%ss\') AS comments_fr FROM commentaire WHERE signalement = 1 ORDER BY id DESC LIMIT 0, 500'); 
+            if ( $query === false)
+            {
+                throw new Exception('problème recuperation des commentaires.');
+            }
+            else {
+                return $query;
+            }
+        }
+    
+        public function allSignalComment()
+        {
+            $query = $this->pdo->query('SELECT id, userid, content, article_id, signalement, DATE_FORMAT(date, \'%d/%m/%Y à %Hh%imin%ss\') AS comments_fr FROM commentaire  WHERE signalement = 1 ORDER BY id DESC LIMIT 0, 500'); 
+            if ( $query === false)
+            {
+                throw new Exception('problème recuperation des commentaires signalés.');
+            }
+            else {
+                return $query;
+            }
+        }
+    
+        
 
 }
 

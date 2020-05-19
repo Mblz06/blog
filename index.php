@@ -34,7 +34,38 @@ try {
         $controller = new PostsController();
         $controller -> category();
 
-    } elseif ($page === 'logout') {
+    }    elseif ($page === 'admin') {
+        if (isset($_SESSION['isAdmin'])){
+
+            if($_SESSION['isAdmin'] ==1){
+                $controller = new PostsController();
+                $controller -> admin();
+
+            }
+            else {
+                header('location: index.php');
+
+            }
+        } else {
+            header('location: index.php');
+        }
+
+       
+        
+    } 
+  
+    // Erreur à voir
+    
+    /* elseif ($page === 'allsignalcomment') {
+           
+        $controller = new PostsController();
+        $controller -> allsignalcomment();
+        if (isset($_GET['allid'])) {
+            $controller = new PostsController();
+            $controller -> allsignalcomment();
+}  */
+    
+    elseif ($page === 'logout') {
         $controller = new SecurityController();
         $controller -> logout();
 

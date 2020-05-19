@@ -49,7 +49,17 @@
                             <a href="index.php?p=logout" class="btn  btn-danger">DECONNEXION</a>
                            </li>     
                             
+                           <?php 
+                           if ($_SESSION['isAdmin'] ===1){
+
+                                    ?>
+                                                            <li class="nav-item">
+                                 
+                                 <a class="nav-link" href="index.php?p=login"><i class="fas fa-user-plus"></i> ADMINISTRATEUR</a>
+                             </li>
                            <?php } 
+
+                           }
                            
                            else  { ?>
 
@@ -63,7 +73,8 @@
                             </li>
                           <?php    }  ?>
 
-                           
+                          
+                        
 
      
                     </ul>

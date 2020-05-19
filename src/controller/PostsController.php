@@ -83,6 +83,19 @@ class PostsController {
 
     }
 
+    public function admin (){
+        $PostsManager = new PostsManager();
+        $comment = $PostsManager->allComment();
+    require ("src/views/frontend/admin.php"); 
+    }
+
+    public function allsignalcomment (){
+        $PostsManager = new PostsManager();
+        $signal = $PostsManager->allSignalComment();
+
+        header('location: index.php?post.allsignalcomment');
+    }
+
 }
 
 
