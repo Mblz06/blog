@@ -86,6 +86,7 @@ class PostsController {
     public function admin (){
         $PostsManager = new PostsManager();
         $comment = $PostsManager->allComment();
+        $donneesadmin = $PostsManager->lastPosts();
     require ("src/views/frontend/admin.php"); 
     }
 
@@ -94,6 +95,14 @@ class PostsController {
         $signal = $PostsManager->allSignalComment();
 
         header('location: index.php?post.allsignalcomment');
+    }
+
+
+    public function removesignal ($id){
+        $PostsManager = new PostsManager();
+        $post = $PostsManager->removeSignalComment($id);
+
+        header('location: index.php?p=admin');
     }
 
 }

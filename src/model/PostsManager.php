@@ -145,6 +145,20 @@ class PostsManager extends Manager
             }
         }
     
+
+        public function removeSignalComment($ID)
+        {
+            $query = $this->pdo->prepare('Update commentaire SET signalement=0 WHERE id= :ID'); 
+            $query->bindParam(':ID', $ID);
+            $result=$query->execute();
+            if ( $result === false)
+            {
+                throw new Exception('problème lors de la suppression du signalement.');
+            }
+            else {
+                return $query;
+            }
+        }
         
 
 }

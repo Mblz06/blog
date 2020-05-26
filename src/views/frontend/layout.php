@@ -55,7 +55,7 @@
                                     ?>
                                                             <li class="nav-item">
                                  
-                                 <a class="nav-link" href="index.php?p=login"><i class="fas fa-user-plus"></i> ADMINISTRATEUR</a>
+                                 <a class="nav-link" href="index.php?p=admin"><i class="fas fa-user-plus"></i> ADMINISTRATEUR</a>
                              </li>
                            <?php } 
 

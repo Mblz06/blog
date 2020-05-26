@@ -2,7 +2,6 @@
 
 <h3>Commentaires Signalés</h3>
 
-
 <ul class="list-group listcomment">
 <?php
 
@@ -10,20 +9,33 @@
             ?>
             
             <li class="list-group-item">
+              
+            <a href="index.php?p=admin.removesignal&id=<?= $data['id']?>" class="btn  btn-danger" type="submit">Retirer Signalement</a>
+ 
                 <?php echo htmlspecialchars($data['content']);
+  
         } ?>
+         
             </li>
     </ul>
- <div class="d-flex justify-content-center" >
-     <ul>
-            <li>
-                            <a href="index.php?post.allsignalcomment" class="btn  btn-danger" type="submit">Commentaires Signalés</a>
 
-                            <a href="" class="btn  btn-success" type="submit">Liste commentaires</a>
-            </li>  
-    </ul>
+    <h3>Editer un Chapitre</h3>
 
-    </div>
+    <?php 
+        while ($data = $donneesadmin->fetch())
+        {
+            ?>
+            <div class="col-lg-6">
+            <h2> 
+                <?php echo htmlspecialchars($data['titre']); 
+                ?>
+                <em>le <?php echo $data['date_fr']; ?></em>
+            </h2>
+           
+            </div>
+    <?php
+        }
+        ?>
 
 
 <?php $content = ob_get_clean(); ?>
