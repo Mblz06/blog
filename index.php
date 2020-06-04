@@ -65,12 +65,27 @@ try {
             $controller -> allsignalcomment();
 }  */
     
-
+elseif ($page === 'admin.editchapter') {
+    if (isset($_GET['id'])) {
+        $controller = new PostsController();
+        $controller -> editchapter($_GET['id']);
+    }
+}
 
     elseif ($page === 'admin.removesignal') {
     if (isset($_GET['id'])) {
         $controller = new PostsController();
         $controller -> removesignal($_GET['id']);
+    }
+
+    else {
+        throw new Exception('pas id commentaire.');
+        }
+}
+elseif ($page === 'admin.deletecomment') {
+    if (isset($_GET['id'])) {
+        $controller = new PostsController();
+        $controller -> deletecomment($_GET['id']);
     }
 
     else {

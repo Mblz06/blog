@@ -105,6 +105,23 @@ class PostsController {
         header('location: index.php?p=admin');
     }
 
+    public function deletecomment ($id){
+        $PostsManager = new PostsManager();
+        $post = $PostsManager->deleteComment($id);
+
+        header('location: index.php?p=admin');
+    }
+
+
+    public function editchapter ($id){
+        $PostsManager = new PostsManager();
+        $post = $PostsManager->getPost($id);
+       
+    
+    require ("src/views/frontend/edition.php"); 
+    }
+    
+
 }
 
 

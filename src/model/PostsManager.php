@@ -160,6 +160,20 @@ class PostsManager extends Manager
             }
         }
         
+        public function deleteComment($ID)
+        {
+            $query = $this->pdo->prepare('DELETE FROM `commentaire` WHERE id= :ID'); 
+            $query->bindParam(':ID', $ID);
+            $result=$query->execute();
+            if ( $result === false)
+            {
+                throw new Exception('problème lors de la suppression du commentaire.');
+            }
+            else {
+                return $query;
+            }
+        }
+
 
 }
 

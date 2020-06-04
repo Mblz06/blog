@@ -10,8 +10,8 @@
             
             <li class="list-group-item">
               
-            <a href="index.php?p=admin.removesignal&id=<?= $data['id']?>" class="btn  btn-danger" type="submit">Retirer Signalement</a>
- 
+            <a href="index.php?p=admin.removesignal&id=<?= $data['id']?>" class="btn  btn-primary" type="submit">Retirer Signalement</a>
+            <a href="index.php?p=admin.deletecomment&id=<?= $data['id']?>" class="btn  btn-danger" type="submit">Supprimer commentaire</a>
                 <?php echo htmlspecialchars($data['content']);
   
         } ?>
@@ -25,14 +25,15 @@
         while ($data = $donneesadmin->fetch())
         {
             ?>
-            <div class="col-lg-6">
+            <li class="list-group-item">
+            <a href="index.php?p=admin.editchapter&id=<?= $data['id']?>" class="btn  btn-primary" type="submit">Editer le chapitre</a>
             <h2> 
                 <?php echo htmlspecialchars($data['titre']); 
                 ?>
                 <em>le <?php echo $data['date_fr']; ?></em>
             </h2>
+           </li>
            
-            </div>
     <?php
         }
         ?>
