@@ -91,7 +91,7 @@ class SecurityController
                 $_SESSION['isAdmin'] = $user->getIsAdmin(); 
                 $_SESSION['ID'] = $user->getID();
                 
-               // die(var_dump($data, $_SESSION['username'], $_SESSION['isAdmin'], $_SESSION['ID'])); 
+             
             } else {
   
                 throw new Exception('Mot de passe ou identifiant non valide ...');
@@ -188,7 +188,7 @@ public function login()
                 throw new Exception('Probleme id article');
             }
             else {
-                //si y'as aucune erreur on ajoute l'utilisateur
+                //si il y a aucune erreur on ajoute l'utilisateur
 
                 $CommentManager->addComment($usercomment);
             }

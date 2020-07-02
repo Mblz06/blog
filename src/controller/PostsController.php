@@ -14,7 +14,6 @@ class PostsController {
 
     public function index () {
  // recuperer liste article bdd ex $article
-        /// $donnees =$req->fetch();
         $PostsManager = new PostsManager();
         $donnees = $PostsManager->lastPosts();
         require ("src/views/frontend/home.php"); 

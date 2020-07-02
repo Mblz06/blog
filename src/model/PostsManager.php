@@ -106,19 +106,6 @@ class PostsManager extends Manager
         }
     }
 
-
-        /* Ajouter commentaire
-
-        public function addcommentaire($ID)
-        {
-            $query = $this->pdo->prepare("INSERT INTO commentaire (userid, content, article_id) VALUES (:userid, :content, :article_id)");
-            $query->bindParam(':ID', $ID);
-            $result=$query->execute();
-    
-            if ($result==false) {
-                throw new Exception('Commentaire non ajouté.');
-            }
-        } */
  
 
         public function allComment()
@@ -177,8 +164,8 @@ class PostsManager extends Manager
     
         public function editChapitre($ID, $story)  
         {
-           // die(var_dump($id, $story));
-            $query = $this->pdo->prepare("Update articles SET content=:content WHERE id= :ID");  // SQL REPLACE ?
+          
+            $query = $this->pdo->prepare("Update articles SET content=:content WHERE id= :ID");  
     
             $query->bindParam(':ID', $ID);
             $query->bindParam(':content', $story);
