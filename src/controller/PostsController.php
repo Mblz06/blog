@@ -6,7 +6,7 @@ use App\Model\CommentManager;
 use App\Model\CommentUser;
 use \Exception;
 
-$home = "t";
+
 
 
 class PostsController {
@@ -20,12 +20,12 @@ class PostsController {
         require ("src/views/frontend/home.php"); 
     }
 
-
-    public function category(){
-
-
+    public function signaled(){
+        require ("src/views/frontend/signaled.php"); 
+        header( "refresh:2;url=index.php?p=home" );
     }
 
+    
 
     public function show ($id){
         $PostsManager = new PostsManager();
@@ -36,23 +36,14 @@ class PostsController {
     require ("src/views/frontend/article.php"); 
     }
 
-
     public function signalcomment ($id, $idchapitre){
         $PostsManager = new PostsManager();
         $post = $PostsManager->updateCommentSignal($id);
-
-        header('location: index.php?p=post.show&id='.$idchapitre);
+        header('location: index.php?p=signaled');
+    
+        
     }
 
-    public function afterlogin (){
-
-
-    }
-
-    public function register (){
-
-
-    }
 
     public function newcomment ($article){
   
@@ -71,15 +62,7 @@ class PostsController {
             throw new Exception('Erreur lors du commentaire.');
         }
 
-
-        
-
         header('location: index.php?p=post.show&id='.$article);
-
-  
-    }
-    public function afterregister (){
-
 
     }
 
@@ -95,6 +78,7 @@ class PostsController {
         $signal = $PostsManager->allSignalComment();
 
         header('location: index.php?post.allsignalcomment');
+        
     }
 
 
@@ -117,20 +101,38 @@ class PostsController {
         $PostsManager = new PostsManager();
         $post = $PostsManager->getPost($id);
        
-    
     require ("src/views/frontend/edition.php"); 
     }
     
 
-}
-
-
-
-
-/*    public function categories(){
-
-
+    
+    public function addchapter (){
+    
+    require ("src/views/frontend/addchapter.php"); 
     }
 
 
-    public function singlePost (){  */
+     public function newchapter ($content_title, $content_desc){ 
+        $PostsManager = new PostsManager();
+        $post = $PostsManager->addChapitre($content_title, $content_desc);
+        
+        header('location: index.php?p=admin');
+}
+
+
+public function deletechapter ($id){
+    $PostsManager = new PostsManager();
+    $post = $PostsManager->deleteChapter($id);
+
+    header('location: index.php?p=admin');
+}
+
+
+    public function posteditedchap ($id, $story){ 
+            $PostsManager = new PostsManager();
+            $post = $PostsManager->editChapitre($id, $story);
+            
+            header('location: index.php?p=admin');
+    }
+
+}

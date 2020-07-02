@@ -13,7 +13,3 @@ class Manager{
             'mysql:host=localhost;dbname=blog; charset=utf8', 'root', '');
             }
         }
-        
-?>
-
-

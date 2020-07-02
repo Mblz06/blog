@@ -15,6 +15,7 @@ class SecurityController
 {
     public function afterregister()
     {
+        // On vérifie si une variable d'un type specifique
         if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'username') && filter_has_var(INPUT_POST, 'password')) {
             $UserManager = new UserManager();
             $user = new User();
@@ -40,7 +41,7 @@ class SecurityController
                 throw new Exception('password invalide');
             }
             else {
-                //si y'as aucune erreur on ajoute l'utilisateur
+                //si il y a aucune erreur on ajoute l'utilisateur
                 $user->setPassword(password_hash($user->getPassword(), PASSWORD_DEFAULT));
                 $user->setIsAdmin(false);
 
@@ -130,7 +131,7 @@ public function login()
 
     private function verifUsername($username)
     { $retour = false;
-        if (preg_match("/^[a-z\d_]{5,20}$/i", $username)) { 
+        if (preg_match("/^[a-z\d_]{5,20}$/i", $username)) {
             $retour = true;
         }
 
@@ -155,14 +156,12 @@ public function login()
         return $retour;
     }
 
-
     public function comment()
     {
         require ("src/views/frontend/register.php");
     }
 
     public function newcomment ($idchapitre){
-
   
         var_dump(filter_has_var(INPUT_POST, 'userid'));
         var_dump(filter_has_var(INPUT_POST, 'content'));
@@ -171,14 +170,7 @@ public function login()
         if (filter_has_var(INPUT_POST, 'userid') && filter_has_var(INPUT_POST, 'content') && filter_has_var(INPUT_POST, 'article_id')) {
             $CommentManager = new CommentManager();
             $usercomment = new UserComment();
-
-
-
-           // $usercomment->setUserID(filter_input(INPUT_POST, 'userid', FILTER_SANITIZE_STRING));
             $usercomment->setContent(filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING));
-          //  $usercomment->setArticle_ID(filter_input(INPUT_POST, 'article_id', FILTER_SANITIZE_STRING));
-            
-
             if ($usercomment->getUserID()) {
             } else {
   
@@ -205,18 +197,4 @@ public function login()
         header("Location: index.php?p=home");
     }
 
-
-
 }
-
-
-/* public function verifMail($email)
-{ $retour = false;
-    if (filter_var('test@test.com', FILTER_VALIDATE_EMAIL)) {
-        $retour = true;
-    }
-
-    return $retour;
-}
-
-} */

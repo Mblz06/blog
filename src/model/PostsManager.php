@@ -174,6 +174,63 @@ class PostsManager extends Manager
             }
         }
 
+    
+        public function editChapitre($ID, $story)  
+        {
+           // die(var_dump($id, $story));
+            $query = $this->pdo->prepare("Update articles SET content=:content WHERE id= :ID");  // SQL REPLACE ?
+    
+            $query->bindParam(':ID', $ID);
+            $query->bindParam(':content', $story);
+            $result=$query->execute();
+            if ( $result === false)
+            {
+                throw new Exception('problème lors de l edition du commentaire.');
+            }
+            else {
+                return $query;
+            }
+        }
+
+
+
+
+
+        public function addChapitre($content_title, $content_content)
+        {
+            $query = $this->pdo->prepare("INSERT INTO articles (titre, content) VALUES (:titre, :content)");
+
+            $query->bindParam(':titre', $content_title);
+            $query->bindParam(':content', $content_content);
+            $result=$query->execute();
+            if ( $result === false)
+            {
+                throw new Exception('problème lors de l ajout de l article.');
+            }
+            else {
+                return $query;
+            }
+        }
+    
+                
+        public function deleteChapter($ID)
+        {
+            $query = $this->pdo->prepare('DELETE FROM `articles` WHERE id= :ID'); 
+            $query->bindParam(':ID', $ID);
+            $result=$query->execute();
+            if ( $result === false)
+            {
+                throw new Exception('problème lors de la suppression de l article.');
+            }
+            else {
+                return $query;
+            }
+        }
+
+
+
+
+
 
 }
 

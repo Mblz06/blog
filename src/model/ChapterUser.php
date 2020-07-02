@@ -4,9 +4,9 @@ namespace App\Model;
 
 class CommentUser
 {
-    private $userid;
-    private $content;
-    private $article_id;
+
+    private $content_title;
+    private $content_desc;
 
     public function getUserID()
     {
@@ -42,4 +42,7 @@ class CommentUser
         $this->article_id = $article_id;
         return $this;
     }
+
 }
+
+

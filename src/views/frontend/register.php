@@ -28,6 +28,7 @@
                     </div>
                 </div>
             </div>
+            <p><i>*Votre mot de passe doit au moins comporter un caractère spécial.</i></p>
             <input type="submit" class="btnSubmit" value="enregistrer" />
         </div>
     </form>

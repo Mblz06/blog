@@ -18,13 +18,13 @@
             ?>
             <div class="col-lg-12">
             <h2> 
-                <?php echo htmlspecialchars($data['titre']); 
+                <?php echo ($data['titre']); 
                 ?>
             </h2>
-
-            <p>
+            <i>par Jean Forteroche</i>
+            <p class="description">
                 <?php
-                echo nl2br(htmlspecialchars($data['content']));
+                echo nl2br(($data['content']));
                 ?>    
             </p>
             </div>
@@ -105,11 +105,10 @@
 <?php    }  ?>
 
 
-
-
 </div>
 </div>
 </div>
+                         
  <!--
 <div class="col-sm-1">
     <div class="thumbnail">
