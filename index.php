@@ -89,7 +89,7 @@ try {
     } elseif ($page === 'admin.posteditedchap') {
         if (isset($_GET['idchapitre']) && isset($_POST['story'])) {
             $controller = new PostsController();
-            $controller->posteditedchap($_GET['idchapitre'], $_POST['story']);
+            $controller->posteditedchap($_GET['idchapitre'], $_POST['story'], $_POST['edititle']);
         }
     } elseif ($page === 'afterlogin') {
         $controller = new SecurityController();

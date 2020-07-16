@@ -3,7 +3,6 @@
 
 <h3 class="m-title">Commentaires Signalés</h3>
 
-<ul class="list-group listcomment">
     <?php
 
     while ($data = $comment->fetch()) {
@@ -17,7 +16,7 @@
     } ?>
 
         </li>
-</ul>
+
 
 <h3 class="m-title">Editer un Chapitre</h3>
 
@@ -28,7 +27,7 @@ while ($data = $donneesadmin->fetch()) {
         <a href="index.php?p=admin.editchapter&id=<?= $data['id'] ?>" class="btn  btn-primary" type="submit">Editer le chapitre</a>
         <a href="index.php?p=admin.deletechapter&id=<?= $data['id'] ?>" class="btn  btn-danger" type="submit">Supprimer le chapitre</a>
         <h2>
-            <?php echo ($data['titre']);
+            <?php echo ($data['title']);
             ?>
             <em>le <?php echo $data['date_fr']; ?></em>
         </h2>

@@ -15,8 +15,10 @@ class SecurityController
 {
     public function afterregister()
     {
+        
         // On vérifie si une variable d'un type specifique
         if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'username') && filter_has_var(INPUT_POST, 'password')) {
+           
             $UserManager = new UserManager();
             $user = new User();
             
@@ -24,11 +26,19 @@ class SecurityController
             $user->setEmail(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
             $user->setPassword(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
+            if ($_POST ['confirm_password'] == $_POST ['password']) {
+            } else {
+  
+                throw new Exception('Votre mot de passe doit être identique');
+            }
+
             if ($this->verifUsername($user->getUserName())) {
             } else {
   
-                throw new Exception('username non valide ...');
+                throw new Exception('username non valide, il doit être composé d\'une majuscule et 5 caractère minimum...');
             }
+
+
 
             if ($this->verifMail($user->getEmail())) {
                 } else {
@@ -47,6 +57,9 @@ class SecurityController
 
                 $UserManager->addUser($user);
             }
+
+
+
         }
             
         header("Location: index.php?p=login");
@@ -118,8 +131,6 @@ public function login()
             );
         }
         session_destroy();
-            session_destroy();
-            
             header("location: index.php?p=home");
     }
 
@@ -140,12 +151,14 @@ public function login()
 
     private function verifPassword($password)
     {  $retour = false;
-        if (preg_match("/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/", $password)) {
+        if (preg_match("/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/", $password)) {   
             $retour = true;
         }
 
         return $retour;
     }
+
+
 
     public function verifMail($email)
     { $retour = false;
@@ -156,16 +169,25 @@ public function login()
         return $retour;
     }
 
+
+    private function verifConfirmPassword()
+    {  $retour = false;
+        if (filter_has_var(INPUT_POST, 'confirm_password') != filter_has_var(INPUT_POST, 'password')) {
+            $retour = true;
+        }
+
+        return $retour;
+    }
+
+
+
     public function comment()
     {
         require ("src/views/frontend/register.php");
     }
 
     public function newcomment ($idchapitre){
-  
-        var_dump(filter_has_var(INPUT_POST, 'userid'));
-        var_dump(filter_has_var(INPUT_POST, 'content'));
-        die(var_dump(filter_has_var(INPUT_POST, 'article_id')));
+
 
         if (filter_has_var(INPUT_POST, 'userid') && filter_has_var(INPUT_POST, 'content') && filter_has_var(INPUT_POST, 'article_id')) {
             $CommentManager = new CommentManager();

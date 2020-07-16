@@ -20,14 +20,15 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="password" placeholder="Your Password *"
+                        <input type="password" class="form-control" name="password" placeholder="Ton mot de passe *"
                             value="" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Confirm Password *" value="" />
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirmer mot de passe *" value="" />
                     </div>
                 </div>
             </div>
+            <p><i>*Votre nom de compte doit au moins comporter une majuscul et plus de 5 caractères.</i></p>
             <p><i>*Votre mot de passe doit au moins comporter un caractère spécial.</i></p>
             <input type="submit" class="btnSubmit" value="enregistrer" />
         </div>
@@ -36,27 +37,4 @@
 <?php $content = ob_get_clean(); ?>
 <?php require('layout.php'); ?>
 
-<!--  <h2>Enregistrement</h2>
-    <form action="register.php" method="POST">
-        <label>Identifiant :</label>
-        <input type="text" name="username" required /><br /><br />
-        <label>Mot de passe :</label>
-        <input type="password" name="password" required /><br /><br />
-        <label>Retapez mot de passe :</label>
-        <input type="password" name="password2" required /><br /><br />
-        <input type="submit" />
-    </form>
-    <br /><hr />
-
-
-    
-    <h2>Connexion</h2>
-    <form action="login.php" method="POST">
-        <label>Identifiant :</label>
-        <input type="text" name="username" required /><br /><br />
-        <label>Mot de passe :</label>
-        <input type="password" name="password" required /><br /><br />
-        <input type="submit" />
-    </form>
--->
 

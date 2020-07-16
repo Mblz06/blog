@@ -6,19 +6,20 @@
 <div class="articles">
     <div class="container text-center">
         <div class="row">
-
         <?php 
         while ($data = $post->fetch())
         {
             ?>
             <div class="col-lg-12">
-            <h2> 
-                <?php echo ($data['titre']); 
+            
+            <form action="index.php?p=admin.posteditedchap&idchapitre=<?= $_GET['id']?>" method="POST"> 
+            <textarea class="form-control" name="edititle" id="edititle" rows="1">
+                <?php echo ($data['title']); 
                 ?>
-            </h2>
+            </textarea>
 
             
-<form action="index.php?p=admin.posteditedchap&idchapitre=<?= $_GET['id']?>" method="POST">   
+            
             <textarea id="story" name="story"
           rows="5" cols="33">
 
@@ -27,7 +28,7 @@
                 ?>    
       
             </textarea>
-            
+           
             <p>
             <button class="btn btn-secondary" type="submit">Editer le Chapitre </button>
 

@@ -39,11 +39,8 @@ class PostsController {
         $PostsManager = new PostsManager();
         $post = $PostsManager->updateCommentSignal($id);
         header('location: index.php?p=signaled');
-    
-        
     }
-
-
+    
     public function newcomment ($article){
   
         if ((isset($_SESSION['ID']) && filter_has_var(INPUT_POST, 'content'))) {
@@ -127,9 +124,9 @@ public function deletechapter ($id){
 }
 
 
-    public function posteditedchap ($id, $story){ 
+    public function posteditedchap ($id, $story, $edititle){ 
             $PostsManager = new PostsManager();
-            $post = $PostsManager->editChapitre($id, $story);
+            $post = $PostsManager->editChapitre($id, $story, $edititle);
             
             header('location: index.php?p=admin');
     }

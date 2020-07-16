@@ -18,12 +18,12 @@
                     ?>
                         <div class="col-lg-6">
                             <h2>
-                                <?php echo ($data['titre']);
+                                <?php echo ($data['title']);
                                 ?>
                                 <em>le <?php echo $data['date_fr']; ?></em>
                             </h2>
 
-                            <p>
+                            <p class="textarticle">
                                 <?php
                                 echo nl2br(($data['content']));
                                 ?>

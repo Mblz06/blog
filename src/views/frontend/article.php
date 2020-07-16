@@ -18,15 +18,17 @@
             ?>
             <div class="col-lg-12">
             <h2> 
-                <?php echo ($data['titre']); 
+                <?php echo ($data['title']); 
                 ?>
             </h2>
             <i>par Jean Forteroche</i>
-            <p class="description">
+            <p class="text-justify">
+            <p>
                 <?php
                 echo nl2br(($data['content']));
                 ?>    
             </p>
+        </div>
             </div>
     <?php
         }
@@ -38,29 +40,15 @@
             <h3>Commentaires</h3>
         </div>
     </div>
-<!-- <div class="row"> 
-  <div class="col-sm-1">
-        <div class="thumbnail">
-            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-        </div>
-    </div>
-
-<div class="col-sm-5"> 
-    <div class="panel panel-default">
-         <div class="panel-heading">
-            <strong>Anonyme</strong> <span class="text-muted">date</span>
-        </div> 
-    <div class="panel-body"> -->
 
 
     <?php
-  //  var_dump($commentaire);
-   // var_dump($commentaire->rowCount());
+
         while ($data = $commentaire->fetch())
         {
             ?>
             
-            <p> 
+            <p class="textarticle"> 
                 <?php echo htmlspecialchars($data['content']); 
                 ?>
             </p>
@@ -99,8 +87,8 @@
 <?php } 
                            
                            else  { ?>
-        <p>
-         Vous devez vous connecter
+        <p class="warning">
+         Vous devez vous connecter pour pouvoir commenter.
         </p>
 <?php    }  ?>
 
@@ -109,27 +97,6 @@
 </div>
 </div>
                          
- <!--
-<div class="col-sm-1">
-    <div class="thumbnail">
-        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-    </div>
-</div>
-
-<div class="col-sm-5">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <strong>Anonyme</strong> <span class="text-muted">date</span>
-        </div>
-    <div class="panel-body">
-Super blog ! Mais ce text est encore en html
-    </div>
- </div>
-</div>
-</div>
-
-</div>
-    -->
 
 <?php $content = ob_get_clean(); ?>
 <?php require('layout.php'); ?>

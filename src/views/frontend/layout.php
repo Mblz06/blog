@@ -18,7 +18,7 @@
                 <ul class="nav navbar-nav text-nowrap flex-row mx-md-auto order-1 order-md-2">
 
 
-                    <li class="nav-item"><a class="nav-link" href="#web">
+                    <li class="nav-item"><a class="nav-link" href="index.php?p=home">
                             <?php
                             if (isset($_SESSION['username'])) {
 
