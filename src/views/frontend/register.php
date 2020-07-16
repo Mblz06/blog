@@ -28,8 +28,8 @@
                     </div>
                 </div>
             </div>
-            <p><i>*Votre nom de compte doit au moins comporter une majuscul et plus de 5 caractères.</i></p>
-            <p><i>*Votre mot de passe doit au moins comporter un caractère spécial.</i></p>
+            <p><i>*Votre nom de compte et mot de passe doivent au moins comporter une majuscule et plus de 5 caractères.</i></p>
+            <p><i>*Votre mot de passe doit au moins comporter un caractère spécial et un numéro.</i></p>
             <input type="submit" class="btnSubmit" value="enregistrer" />
         </div>
     </form>

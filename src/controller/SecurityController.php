@@ -38,8 +38,6 @@ class SecurityController
                 throw new Exception('username non valide, il doit être composé d\'une majuscule et 5 caractère minimum...');
             }
 
-
-
             if ($this->verifMail($user->getEmail())) {
                 } else {
                     if ($UserManager->verifEmail($user->getEmail())) {
@@ -48,17 +46,15 @@ class SecurityController
                 }
 
             if ($this->verifPassword($user->getPassword())) {
-                throw new Exception('password invalide');
-            }
-            else {
                 //si il y a aucune erreur on ajoute l'utilisateur
                 $user->setPassword(password_hash($user->getPassword(), PASSWORD_DEFAULT));
                 $user->setIsAdmin(false);
 
                 $UserManager->addUser($user);
-            }
-
-
+            } else {
+                    throw new Exception('password invalide');
+                }
+            
 
         }
             
@@ -142,7 +138,7 @@ public function login()
 
     private function verifUsername($username)
     { $retour = false;
-        if (preg_match("/^[a-z\d_]{5,20}$/i", $username)) {
+        if (preg_match("/^(?=.*[A-Z])(?=.*[a-z]).{5,20}/", $username)) {
             $retour = true;
         }
 
@@ -151,10 +147,10 @@ public function login()
 
     private function verifPassword($password)
     {  $retour = false;
-        if (preg_match("/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/", $password)) {   
+        if (preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{5,20}/", $password)) {   
             $retour = true;
         }
-
+// Prendre exemple : P4ssw0rd
         return $retour;
     }
 
