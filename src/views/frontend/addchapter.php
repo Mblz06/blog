@@ -8,16 +8,7 @@
     <div class="container text-center">
         <div class="row">
 
-      
             <div class="col-lg-12">
-
-
-            <script>
-    tinymce.init({
-      selector: '#mytextarea'
-    });
-  </script>
-
 
             <form action="index.php?p=admin.newchapter" method="POST">   
 <div class="form-group">
@@ -27,30 +18,18 @@
     <label for="content_desc">description</label>
     <textarea class="form-control" name="content_desc" id="content_desc" rows="3"></textarea>
         <p>
-         <button>Ajouter mon article</button>
+        <button class="btn btn-secondary" type="submit">Ajouter mon article</button>
         </p>
   </div>
 </form>
 
-</script>
-  <script>
-    tinymce.init({
-      selector: '#mytextarea'
-    });
-  </script>
-</head>
-
 <script>
     tinymce.init({
       selector: 'textarea',
-      toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
       toolbar_mode: 'floating',
+      language : 'fr_FR',
     });
   </script>
-
-
-
-
 
 <?php $content = ob_get_clean(); ?>
 <?php require('layout.php'); ?>

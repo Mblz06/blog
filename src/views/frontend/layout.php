@@ -38,7 +38,7 @@
                 <div class="ml-auto navbar-collapse collapse nav-content order-3 order-md-3">
                     <ul class="ml-auto nav navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?p=home"><i class="fas fa-home"></i> ACCEUIL</a>
+                            <a class="nav-link" href="index.php?p=home"><i class="fas fa-home"></i> ACCUEIL</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#actualite"><i class="fas fa-newspaper"></i> ACTUALITES</a>

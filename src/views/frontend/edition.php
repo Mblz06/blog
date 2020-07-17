@@ -31,16 +31,12 @@
            
             <p>
             <button class="btn btn-secondary" type="submit">Editer le Chapitre </button>
-
-          
         </p>
             </div>
 
     <?php
         }
         ?>
-
-
 
 <script>
     tinymce.init({
@@ -49,8 +45,6 @@
       language : 'fr_FR',
     });
   </script>
-
-
 
 <?php $content = ob_get_clean(); ?>
 <?php require('layout.php'); ?>
